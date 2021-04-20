@@ -3,10 +3,17 @@ import { SafeAreaView, Text, Image, TouchableOpacity, StyleSheet, Platform, Dime
 
 import wateringImg from '../assets/watering.png';
 import colors from '../styles/colors';
-import { Feather } from '@expo/vector-icons'
+import { Feather } from '@expo/vector-icons';
 import fonts from '../styles/fonts';
+import { useNavigation } from '@react-navigation/core';
 
 export function Welcome() {
+    const navigation = useNavigation();
+
+    function handleStart() {
+        navigation.navigate('UserIdentification');
+    }
+
     return (
         <SafeAreaView style={style.container}>
             <View style={style.wrapper}>
@@ -23,6 +30,7 @@ export function Welcome() {
                 <TouchableOpacity
                     style={style.button}
                     activeOpacity={0.7}
+                    onPress={handleStart}
                 >
                     <Text style={style.buttonText}>
                         <Feather name='chevron-right' style={style.buttonIcon} />
